@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>654,1241</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>799,1241</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CinepolisArgentina_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -192,7 +192,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">290,555.5 290,585.5 300,585.5 300,604.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ManipulatingBlackListTracking workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ManipulateBlackListTracking\ManipulatingBlackListTracking.xaml">
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ManipulatingBlackListTracking workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ManipulateBlackListTracking\ManipulatingBlackListTracking.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="sd:DataTable" x:Key="in_NoSociosDataTable">[inputDataTable]</InArgument>
                       <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_BlackListTrackingDT">[blackListDatatable]</OutArgument>
@@ -434,13 +434,13 @@
     <FlowStep>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">0,54.5</av:Point>
+          <av:Point x:Key="ShapeLocation">10,304.5</av:Point>
           <av:Size x:Key="ShapeSize">200,51</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
