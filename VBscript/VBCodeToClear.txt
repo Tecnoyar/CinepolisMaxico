@@ -1,3 +1,3 @@
 Sub ClearSheet()
-Sheets("Black list").Cells.Clear
+Sheets("Black List").Cells.Clear
 End Sub

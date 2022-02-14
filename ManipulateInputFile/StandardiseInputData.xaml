@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>808,8992</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>808,9355</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StandardiseInputData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -98,7 +98,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="StandardiseInputData" sap:VirtualizedContainerService.HintSize="813,8927" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence DisplayName="StandardiseInputData" sap:VirtualizedContainerService.HintSize="813,9290" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="directrioDT" />
       <Variable x:TypeArguments="sd:DataTable" Name="BDTradDT" />
@@ -116,7 +116,7 @@
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Working on input file&quot;]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,91" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Parntner: &quot;+ in_InputPartnerFileName]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,91" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Non parntner: &quot;+ in_InputNonPartnerFileName]" />
-    <If Condition="[Path.GetExtension(in_InputNonPartnerFileName).Trim.ToLower.Contains(&quot;csv&quot;)]" DisplayName="If- file is csv" sap:VirtualizedContainerService.HintSize="771,392" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[Path.GetExtension(in_InputNonPartnerFileName).Trim.ToLower.Contains(&quot;csv&quot;)]" DisplayName="If- file is csv" sap:VirtualizedContainerService.HintSize="771,766" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -124,25 +124,26 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,608" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[nonPartnerInputDT]" Delimitator="Comma" DisplayName="Read CSV- input file" FilePath="[&quot;Data\Input\&quot;+in_InputNonPartnerFileName]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1">
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[partnerInputDT]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[&quot;Data\Input\&quot;+ in_InputPartnerFileName]" sap:VirtualizedContainerService.HintSize="334,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ReadCsvFile>
-          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[partnerInputDT]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[&quot;Data\Input\&quot;+ in_InputPartnerFileName]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2">
+          <ui:AppendCsvFile Encoding="{x:Null}" DataTable="[partnerInputDT]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="[&quot;Data\Input\&quot;+in_InputNonPartnerFileName]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1" />
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[nonPartnerInputDT]" Delimitator="Comma" DisplayName="Read CSV- input file" FilePath="[&quot;Data\Input\&quot;+in_InputNonPartnerFileName]" sap:VirtualizedContainerService.HintSize="334,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -306,31 +307,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,51" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Total number of records in Socios data: &quot;+partnerInputDT.Rows.Count.ToString]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,91" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Total number of records in non Socios data: &quot;+ nonPartnerInputDT.Rows.Count.ToString]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="771,51" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="771,51" sap2010:WorkflowViewState.IdRef="CommentOut_18">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,335" sap2010:WorkflowViewState.IdRef="Sequence_39">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_46">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[nonPartnerInputDT]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;Data\Input\&quot;+in_InputNonPartnerFileName]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_9">
+          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[nonPartnerInputDT]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;Data\Input\&quot;+in_InputNonPartnerFileName]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -338,7 +323,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:WriteCsvFile>
-          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[partnerInputDT]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;Data\Input\&quot;+ in_InputPartnerFileName]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_8">
+          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[partnerInputDT]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;Data\Input\&quot;+ in_InputPartnerFileName]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="WriteCsvFile_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -355,7 +340,40 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:MergeDataTable Destination="[nonPartnerInputDT]" DisplayName="Merge Data Table- merge both files" sap:VirtualizedContainerService.HintSize="771,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Error" Source="[partnerInputDT]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,51" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Total number of records in Socios data: &quot;+partnerInputDT.Rows.Count.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="771,51" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Total number of records in non Socios data: &quot;+ nonPartnerInputDT.Rows.Count.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="771,51" sap2010:WorkflowViewState.IdRef="CommentOut_19">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_47">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MergeDataTable Destination="[nonPartnerInputDT]" DisplayName="Merge Data Table- merge both files" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Error" Source="[partnerInputDT]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
     <Assign sap:VirtualizedContainerService.HintSize="771,60" sap2010:WorkflowViewState.IdRef="Assign_16">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_InputDataTable]</OutArgument>
