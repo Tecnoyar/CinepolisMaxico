@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>803,9183</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>803,8892</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StandardiseInputData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -97,7 +97,7 @@
       <AssemblyReference>UiPath.FTP.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="StandardiseInputData" sap:VirtualizedContainerService.HintSize="813,9118" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence DisplayName="StandardiseInputData" sap:VirtualizedContainerService.HintSize="813,8827" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="directrioDT" />
       <Variable x:TypeArguments="sd:DataTable" Name="BDTradDT" />
@@ -379,7 +379,7 @@
         <InArgument x:TypeArguments="x:String">["BD_Consolidada_Semana_"+datetime.Today.ToString("dd-MM-yyyy")+".csv"]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[out_InputDataTable.Rows.Count&gt;1]" sap:VirtualizedContainerService.HintSize="771,7313" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[out_InputDataTable.Rows.Count&gt;1]" sap:VirtualizedContainerService.HintSize="771,7022" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -387,7 +387,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="526,7155" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence sap:VirtualizedContainerService.HintSize="526,6864" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="BDATMDT" />
             <Variable x:TypeArguments="scg:List(s:DateTime)" Name="ThisWeekDateTime" />
@@ -463,13 +463,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[out_InputDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[out_InputDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,363" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,343" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,243" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -500,14 +500,6 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:CommentOut>
-                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_30">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Object">[CurrentRow.Item("nombre")]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[if(string.IsNullOrWhiteSpace(CurrentRow.Item("nombre").ToString) or string.IsNullOrEmpty(CurrentRow.Item("nombre").ToString),"NULL",CurrentRow.Item("nombre").ToString)]</InArgument>
-                    </Assign.Value>
-                  </Assign>
                   <Assign DisplayName="Assign- remove special character" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Object">[CurrentRow.Item("nombre")]</OutArgument>
@@ -521,7 +513,7 @@
             </ui:ForEachRow.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -567,16 +559,16 @@
           </ui:LogMessage>
           <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_12">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,143" sap2010:WorkflowViewState.IdRef="Sequence_40">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,534" sap2010:WorkflowViewState.IdRef="Sequence_40">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[emptyNameDT.Rows.Count&gt;0]" DisplayName="If- No name for current date" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_6">
+                <If Condition="[emptyNameDT.Rows.Count&gt;0]" DisplayName="If- No name for current date" sap:VirtualizedContainerService.HintSize="484,442" sap2010:WorkflowViewState.IdRef="If_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -687,10 +679,10 @@ Select ds =dr.ItemArray
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <If Condition="[notThisWeekdata isnot Nothing]" DisplayName="If- datatable row count is greater than 0" sap:VirtualizedContainerService.HintSize="484,654" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[notThisWeekdata isnot Nothing]" DisplayName="If- datatable row count is greater than 0" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -798,7 +790,7 @@ Select ds =dr.ItemArray
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Consolidate data after removing duplicate emails entry: &quot;+ out_InputDataTable.Rows.Count.ToString]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Consolidate data after removing duplicate emails entry: &quot;+ out_InputDataTable.Rows.Count.ToString]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -806,7 +798,7 @@ Select ds =dr.ItemArray
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Filter This week data&quot;]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Filter This week data&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -814,7 +806,7 @@ Select ds =dr.ItemArray
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <TryCatch DisplayName="Try Catch- get this week data" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try Catch- get this week data" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -858,7 +850,7 @@ Select ds =dr.ItemArray
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <If Condition="[out_InputDataTable IsNot Nothing]" DisplayName="If- data exist for current date" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="If_4">
+          <If Condition="[out_InputDataTable IsNot Nothing]" DisplayName="If- data exist for current date" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -869,7 +861,7 @@ Select ds =dr.ItemArray
               <Throw DisplayName="Throw- no data found" Exception="[new BusinessRuleException(&quot;No data for this week in excel file, please check the input file, accepted input file format is 'dd/MM/YYYY', if you want to change the format please contact developer.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </If.Else>
           </If>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_24">
                 <sap:WorkflowViewStateService.ViewState>
@@ -919,7 +911,7 @@ Select ds =dr.ItemArray
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;randomize input data&quot;]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;randomize input data&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
