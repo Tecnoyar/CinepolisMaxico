@@ -2,17 +2,17 @@
   <x:Members>
     <x:Property Name="in_NoSociosDataTable" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_BlackListTrackingDT" Type="OutArgument(sd:DataTable)" />
-    <x:Property Name="in_BlackListFileName" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_SurveyTradFileName" Type="InArgument(x:String)" />
     <x:Property Name="in_SurveyVIPFileName" Type="InArgument(x:String)" />
     <x:Property Name="in_SurveyMcFileName" Type="InArgument(x:String)" />
     <x:Property Name="in_SurveyATMFileName" Type="InArgument(x:String)" />
+    <x:Property Name="inOut_BlackListFileName" Type="InOutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>653,2918</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>625,3762</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ManipulatingBlackListTracking_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -84,9 +84,10 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ManipulatingBlackListTracking" sap:VirtualizedContainerService.HintSize="418,2853" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ManipulatingBlackListTracking" sap:VirtualizedContainerService.HintSize="418,3697" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="TradDT" />
       <Variable x:TypeArguments="sd:DataTable" Name="VIPDT" />
@@ -100,18 +101,18 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Working on Blacklist file: &quot;+ in_BlackListFileName]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Working on Blacklist file: &quot;+ inOut_BlackListFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[blacklistOrignalDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ReadRange_7" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[blacklistOrignalDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="ReadRange_7" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -163,41 +164,73 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[TradDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ReadRange_5" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyTRAD_SheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_SurveyTradFileName]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[&quot;Working on Trad file: &quot;+ in_SurveyTradFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[TradDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="ReadRange_5" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyTRAD_SheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_SurveyTradFileName]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[VIPDT]" DisplayName="Read VIP DT" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ReadRange_6" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyVIP_SheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+ in_SurveyVIPFileName]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;Working on VIP file: &quot;+ in_SurveyVIPFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[VIPDT]" DisplayName="Read VIP DT" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="ReadRange_6" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyVIP_SheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+ in_SurveyVIPFileName]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[McDT]" DisplayName="Read MC Range" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ReadRange_3" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyMC_SheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_SurveyMcFileName]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_67" Level="Info" Message="[&quot;Working on MC file: &quot;+ in_SurveyMcFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[McDT]" DisplayName="Read MC Range" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyMC_SheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_SurveyMcFileName]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ATMDT]" DisplayName="Read ATM DT" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyATMSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_SurveyATMFileName]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_68" Level="Info" Message="[&quot;Working on ATM file: &quot;+  in_SurveyATMFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ATMDT]" DisplayName="Read ATM DT" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="True" SheetName="[in_Config(&quot;SurveyATMSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_SurveyATMFileName]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="CommentOut_7">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="318,678" sap2010:WorkflowViewState.IdRef="Sequence_57">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,678" sap2010:WorkflowViewState.IdRef="Sequence_57">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1501,7 +1534,7 @@
     </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="267,143" sap2010:WorkflowViewState.IdRef="Sequence_58">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="480,2121" sap2010:WorkflowViewState.IdRef="Sequence_58">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1685,7 +1718,7 @@ Select dr= dr.ItemArray
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:Delete ContinueOnError="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[&quot;Data\Temp\&quot;+in_BlackListFileName]">
+          <ui:Delete ContinueOnError="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1718,7 +1751,7 @@ Select dr= dr.ItemArray
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:KillProcess>
-    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete- black list file" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[&quot;Data\Temp\&quot;+in_BlackListFileName]">
+    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete- black list file" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1726,6 +1759,14 @@ Select dr= dr.ItemArray
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:Delete>
+    <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_56">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[inOut_BlackListFileName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">BlacklistUpdated.xlsx</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_63" Level="Info" Message="[&quot;Previous blacklist deleted&quot;]" />
     <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1447" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
@@ -1735,12 +1776,12 @@ Select dr= dr.ItemArray
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_64" Level="Info" Message="[&quot;Working on new blacklist file&quot;]" />
-      <ui:WriteRange AddHeaders="True" DataTable="[blacklistOrignalDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_14" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" />
-      <ui:AppendRange DataTable="[TradDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_5" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" />
-      <ui:AppendRange DataTable="[VIPDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_6" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" />
-      <ui:AppendRange DataTable="[McDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_7" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" />
-      <ui:AppendRange DataTable="[ATMDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_8" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" />
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_BlackListTrackingDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_8" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" />
+      <ui:WriteRange AddHeaders="True" DataTable="[blacklistOrignalDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_14" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]" />
+      <ui:AppendRange DataTable="[TradDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_5" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]" />
+      <ui:AppendRange DataTable="[VIPDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_6" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]" />
+      <ui:AppendRange DataTable="[McDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_7" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]" />
+      <ui:AppendRange DataTable="[ATMDT.DefaultView.ToTable(True,&quot;fe_programacion&quot;,&quot;correo&quot;,&quot;cl_cine&quot;,&quot;marca&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_8" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_BlackListTrackingDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_8" SheetName="[in_Config(&quot;in_BlackListSheetName&quot;).ToString]" WorkbookPath="[&quot;Data\Temp\&quot;+inOut_BlackListFileName]" />
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;Total black list data: &quot;+out_BlackListTrackingDT.Rows.Count.ToString]" />
       <Assign DisplayName="Remove duplicate CORREO" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_53">
         <Assign.To>
